@@ -1,23 +1,28 @@
 import java.io.IOException;
-import java.nio.file.Path;
-
+import java.util.List;
 
 
 public class SalesReportApplication {
+
+
     public static void main(String[] args) throws IOException {
+        String model3 = "src/resources/model3.csv";
+        String modelS = "src/resources/modelS.csv";
+        String modelX = "src/resources/modelX.csv";
 
-        Model3Information model3Information = new Model3Information();
-         Model3Information.model3Report();
+        SalesReader sr = new SalesReader();
+
+        List<Model> Model3SalesInformation = sr.readSalesData(model3);
+        List<Model> ModelSSalesInformation = sr.readSalesData(modelS);
+        List<Model> ModelXSalesInformation = sr.readSalesData(modelX);
+
+
+
     }
 
-    static Model getModel(String line){
-        String [] fields = line.split(",");
 
-        if(fields.length != 2){
-            throw new RuntimeException("Invalid Line in CSV file " + line);
-        }
-        return new Model(fields[0], fields[1]);
-    }
+
+
 
 
 }
