@@ -19,7 +19,7 @@ public class SalesReader {
             while((line = reader.readLine()) != null){
                 String[] fields = line.split(",");
                 modelData.add(new Model(fields[0],fields[1]));
-                System.out.println(fields);
+                System.out.println(fields[0])   ;
             }
         }finally {
             if(reader != null){

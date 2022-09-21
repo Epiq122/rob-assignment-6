@@ -3,24 +3,23 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class Model {
-    private String salesDate;
+    private DateTimeFormatter salesDate;
+
     private Integer sales;
 
     public Model(String salesDate, String sales) {
-        this.salesDate = String.valueOf(YearMonth.parse(salesDate, DateTimeFormatter.ofPattern(
-                "MMMM-yy",
-                Locale.CANADA)));
+        this.salesDate = DateTimeFormatter.ofPattern("MMM,yyy", Locale.CANADA);
         this.sales = Integer.parseInt(sales);
 
     }
 
 
 
-    public String getSalesDate() {
+    public DateTimeFormatter getSalesDate() {
         return salesDate;
     }
 
-    public void setSalesDate( String sales) {
+    public void setSalesDate( DateTimeFormatter salesDate ) {
         this.salesDate = salesDate;
     }
 
