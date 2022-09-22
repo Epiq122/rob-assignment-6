@@ -4,16 +4,26 @@ import java.util.Locale;
 
 public class Model {
     private DateTimeFormatter salesDate;
+    private YearMonth date;
 
     private Integer sales;
 
-    public Model(String salesDate, String sales) {
-        this.salesDate = DateTimeFormatter.ofPattern("MMM,yyy", Locale.CANADA);
+    public Model(String date, String sales) {
+//        this.salesDate = DateTimeFormatter.ofPattern("MMM,yyy", Locale.CANADA);
+        this.date = YearMonth.parse(date,DateTimeFormatter.ofPattern("MMM-yy",Locale.US));
+
         this.sales = Integer.parseInt(sales);
+
 
     }
 
+    public YearMonth getDate() {
+        return date;
+    }
 
+    public void setDate(YearMonth date) {
+        this.date = date;
+    }
 
     public DateTimeFormatter getSalesDate() {
         return salesDate;
@@ -36,7 +46,7 @@ public class Model {
     @Override
     public String toString() {
         return "Model{" +
-                "salesDate='" + salesDate + '\'' +
+                "salesDate='" + date + '\'' +
                 ", sales='" + sales + '\'' +
                 '}';
     }
